@@ -1,8 +1,7 @@
 /**
- ** Project : ACE AFRICA INTERFACE LIBRARY
+ ** Project : Bigjara Interface Library
  ** Author  : Adeleke Bright 
- ** Description :  This library is built to allow easy and fast product development for 
- **    ACE AFRICA
+ ** Description :  This library is built to allow easy and fast product development 
 **/
 const AIL = {} 
 AIL.selector = e => document.querySelector(e)
@@ -22,15 +21,7 @@ AIL.toggle = (function(target , content , errorHandler  , ...icons) {
                    .map(toggleable =>  {
                        toggleable.classList.remove("active")
                 })
-                // if (!realContent.contains("grow-animation-ease")){
-                //     realContent.add("grow-animation-ease")
-                // }
-                realContent.toggle("active") 
-
-                // if (!currentIcons.contains("grow-animation-ease")){
-                //     currentIcons.add("grow-animation-ease")
-                // }
-                //trigger.parentNode.nextElementSibling.classList.add("grow-animation-ease")
+                realContent.toggle("active")
                 if (icons.length > 0 && currentIcons.contains("fa")){
                    currentIcons.toggle("fa-plus")
                    currentIcons.toggle("fa-minus")
@@ -92,20 +83,16 @@ AIL.modal = (function(target , content , closer ,  errorHandler ){
         errorHandler(error.message) 
         return 
     }
-})(".modal-trigger" , ".modal" , ".close" ,  console.error)  
+})(".modal-trigger" , ".modal" , ".close" ,  console.error) 
 
+/**
+ * The tab method handles revealing and hinding of contents to free up space
+ */
 AIL.tab = (function(targets , contents , errorHandler){
     try { 
         let tabs = AIL.selectAll(contents) 
         if (tabs.length === 0) throw new Error("No content to use as tab")
         let revealers = AIL.selectAll(targets) 
-        //Map over all targets 
-        // Prevent default 
-        // Attach an event 
-        // Remove all active contents that are not the current content 
-        // Remove every link that is not the current link 
-        // Add the class active content and active link to the triggers and content 
-        // only if the active content has no class called active content
         revealers.map((reveal , i) => {
             reveal.addEventListener("click" , e=> { 
               e.preventDefault()
@@ -123,6 +110,7 @@ AIL.tab = (function(targets , contents , errorHandler){
         return 
     }
 })(".tab-reveal" , ".tab" , console.error) 
+
 
 let mobileToggler = document.querySelector("#mobile-toggler")
 if (mobileToggler) {
@@ -151,6 +139,7 @@ if (mobileToggled) {
     })
 }  
 
+//This is for handling submission of contacts
 let submitMessageButton = AIL.selector("#submitMessage") 
 if (submitMessageButton){
     submitMessageButton.addEventListener("click" , e => {
@@ -205,4 +194,23 @@ if (submitMessageButton){
         }) 
        
     })
-}
+} 
+
+//Handling Clicking of the close button 
+AIL.close = (function(targets){   
+   
+    try {
+        let closers = AIL.selectAll(targets) 
+        if (closers){
+            closers.map((button , i) => { 
+                button.addEventListener("click" , e => {
+                    e.target.parentNode.style.display ="none"
+                })
+            }) 
+        }else {
+            throw new Error("No closing Button added")
+        }
+    }catch(error){
+        return error
+    }
+})(".close")

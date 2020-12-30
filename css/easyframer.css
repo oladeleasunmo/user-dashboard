@@ -844,9 +844,24 @@ tr th , tbody tr {
     overflow-x: auto;
     flex-flow: row nowrap;
 }
-
-.tab-content {
+a  , a:hover{
+  text-decoration: none!important;
+}
+.tab {
   display : none;
+}
+.active-content {
+  display : block;
+}
+.active-link  { 
+  padding-bottom : 10px;
+  border-bottom : 5px solid #007bff;
+  text-decoration: none;
+  transition: border-bottom 1s ease-in-out;
+}
+.active-link:hover {
+  text-decoration : none; 
+  border-bottom : 5px solid #0077ff;
 }
 .z-index-overall  {
     z-index: 999999999999999999999;
@@ -854,6 +869,7 @@ tr th , tbody tr {
 .z-index-500 {
   z-index: 500;
 }
+/*Handling Tabs*/
 .active {
   display : block;
 }
@@ -1200,12 +1216,15 @@ tr th , tbody tr {
   border-radius: 8px;
 }
 /* The Close Button */
-.close {
-  color: #f00;
+.close  {
   float: right;
   font-size: 28px;
   font-weight: bold;
   margin-right:10px;
+  cursor : pointer ; 
+} 
+.red-text {
+  color: #f00;
 }
 .both-hover-with-focus:hover , .both-hover-with-focus:focus {
   color : #000; 
@@ -1709,6 +1728,11 @@ p.bg-peco {
   outline : none ; 
   border : 1px solid #fff;
   padding : 10px 20px;
+}
+.remove {
+  transition: display 2s ease-in;
+  
+  display : none
 }
   .frper {
     max-width: 720px;
