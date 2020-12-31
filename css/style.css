@@ -61,7 +61,7 @@ a.user-link:hover{
     display : none;
   }
   .has-dropdown:hover .is-drop-content {
-    display : block
+    display : block ;
   }
   .has-dropdown > a {
     text-decoration : none ; 
